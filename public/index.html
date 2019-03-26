@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Knowledge</title>
+</head>
+
+<body>
+    <div id='nav-placeholder'></div>
+    <div class='bg-light' id="app">
+        <div class='p-3' v-for="section in sections">
+            <div class='w-75 mx-auto card-body bg-white d-flex flex-md-column'>
+                <div class='d-flex justify-content-center p-2'>
+                    <h2 class='p-3'>{{section.title}}</h2>
+                </div>
+                <div class='lead p-2'>{{section.body}}</div>
+            </div>
+        </div>
+    </div>
+    <div id='footer-placeholder'>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"
+        integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
+        integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+    <script src="/script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+</body>
+<script>
+    $.get("templates/navbar.html", function (data) {
+        $("#nav-placeholder").replaceWith(data);
+    });
+    $.get("templates/footer.html", function (data) {
+        $("#footer-placeholder").replaceWith(data);
+    })
+</script>
+
+</html>
