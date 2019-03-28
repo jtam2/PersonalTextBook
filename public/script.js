@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-      sections: [],
+      structure: undefined,
     },
     created() {
       this.getItems();
@@ -10,7 +10,8 @@ var app = new Vue({
       async getItems() {
         try {
           let response = await axios.get("/api/sections");
-          this.sections = response.data;
+          console.log(response.data)
+          this.structure = response.data;
           return true;
         } catch (error) {
           console.log(error);

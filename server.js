@@ -13,9 +13,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 //The Schema is the structure of the model or the structure of the document
-let sectionSchema = new mongoose.Schema({
-    title: String,
-    body: String
+let structureSchema = new mongoose.Schema({
+    structure: []
+    // title: String,
+    // body: String
 });
 
 //Comment this out when we put it in
@@ -23,19 +24,18 @@ app.use(express.static('public'));
 
 // section is the name of the collection and we passed in the Scheme
 //This returns a model or document you can say.
-const SECTION = mongoose.model("section", sectionSchema);
+const STRUCTURE = mongoose.model("structure", structureSchema);
 
 app.post('/api/sections', async (req, res) => {
     //this creates a section object or really a model
 
     try {
-        const section = SECTION({
-            title: req.body.title,
-            body: req.body.body
+        const structure = STRUCTURE({
+            structure: req.body.structure
         })
         // we are going to wait until we save the object into the database
-        await section.save()
-        res.send(section)
+        await structure.save()
+        res.send(structure)
     } catch (err) {
         console.log(err)
         res.sendStatus(500)
@@ -44,8 +44,9 @@ app.post('/api/sections', async (req, res) => {
 
 app.get('/api/sections', async (req, res) => {
     try{
-        let sections = await SECTION.find()
-        res.send(sections)        
+        let structure = await STRUCTURE.find()
+
+        res.send(structure[0])        
     } catch (err) {
         console.log(err)
         req.sendStatus(500)

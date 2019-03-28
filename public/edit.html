@@ -13,7 +13,7 @@
 
 <!-- Vue -->
     <div id="app" class='bg-light'>
-        <div class='card-body mx-auto bg-white w-75'>
+        <!-- <div class='card-body mx-auto bg-white w-75'>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Title</label>
                 <input v-model='title' type="title" class="form-control" id="exampleFormControlInput1"
@@ -22,8 +22,12 @@
             <div class="form-group ">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea v-model='body' class="form-control" rows='10' id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <button type="button" @click='createSection' class="btn btn-success">Save</button>
+            </div> -->
+            <button type="button" @click='addHeader' class="btn btn-success">Test Add Header</button>
+            <button type="button" @click='addBody' class="btn btn-success">Test Add Body</button>
+            <button type="button" @click='addCode' class="btn btn-success">Test Add Code</button>
+            <button type="button" @click='createSection' class="btn btn-success">Test POST structure to database</button>
+
         </div>
 
     </div>

@@ -1,9 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        title: '',
-        body: '',
-        sections: [],
+        structure: []
     },
     created() {
         this.getSections();
@@ -12,17 +10,25 @@ var app = new Vue({
         async getSections() {
             try {
                 let response = await axios.get("/api/sections");
-                this.sections = response.data;
+                this.structure = response.data;
                 return true;
             } catch (error) {
                 console.log(error);
             }
         },
+        addHeader(){
+            this.structure.push({header: 'TESTING'})
+        },
+        addBody(){
+            this.structure.push({body: "This is the body. Did you know that I love pie"})
+        },
+        addCode(){
+            this.structure.push({code:'THIS IS A code Snippet let a=b'})
+        },
         async createSection() {
             try {
                 let response = await axios.post('/api/sections', {
-                    title: this.title,
-                    body: this.body
+                    structure: this.structure
                 });
             } catch (err) {
                 console.log(err)
