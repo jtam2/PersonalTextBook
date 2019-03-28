@@ -26,7 +26,7 @@ app.use(express.static('public'));
 //This returns a model or document you can say.
 const STRUCTURE = mongoose.model("structure", structureSchema);
 
-app.post('/api/sections', async (req, res) => {
+app.post('/api/structure', async (req, res) => {
     //this creates a section object or really a model
 
     try {
@@ -42,14 +42,36 @@ app.post('/api/sections', async (req, res) => {
     }
 })
 
-app.get('/api/sections', async (req, res) => {
+app.get('/api/structure', async (req, res) => {
     try{
         let structure = await STRUCTURE.find()
-
-        res.send(structure[0])        
+        res.send(structure)        
     } catch (err) {
         console.log(err)
-        req.sendStatus(500)
+        res.sendStatus(500)
+    }
+})
+
+app.get('/api/structure/:id', async (req, res)=>{
+    try{
+        let structure = await STRUCTURE.findOne({_id: req.params.id})
+        res.send(structure)
+    } catch (err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+
+})
+
+app.put('/api/structure/:id', async (req, res) => {
+    try{
+        let structure = await STRUCTURE.findOne({_id: req.params.id})
+        structure = req.body.structure
+        structure.save()
+        res.send(structure)
+    } catch (err) {
+        console.log(err)
+        res.sendStatus(500)
     }
 })
  

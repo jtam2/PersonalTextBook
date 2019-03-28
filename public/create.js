@@ -1,7 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-        structure: []
+        structure: [],
+        structures: null
     },
     created() {
         this.getSections();
@@ -9,8 +10,8 @@ var app = new Vue({
     methods: {
         async getSections() {
             try {
-                let response = await axios.get("/api/sections");
-                this.structure = response.data;
+                let response = await axios.get("/api/structure");
+                this.structures = response.data;
                 return true;
             } catch (error) {
                 console.log(error);
@@ -27,12 +28,13 @@ var app = new Vue({
         },
         async createSection() {
             try {
-                let response = await axios.post('/api/sections', {
+                let response = await axios.post('/api/structure', {
                     structure: this.structure
                 });
             } catch (err) {
                 console.log(err)
             }
         }
+
     }
 });

@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -10,9 +11,24 @@
 
 <body>
     <div id='nav-placeholder'></div>
-    <div class='bg-light' id="app">
-        <div class='p-3' v-for="struct in structure.structure">
-            <div class='w-75 mx-auto card-body bg-white d-flex flex-md-column'>
+    <div class='bg-light wrapper' id="app">
+        <!-- SIDE BAR -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Documents</h3>
+            </div>
+            <ul class="list-unstyled components" v-for="struct in structures">
+                <li>
+                    <button type='button' @click='displayDoc(struct._id)'>{{struct._id}}</button>
+                </li>
+            </ul>
+        </nav>
+        <!-- END OF SIDEBAR -->
+
+        <!-- MAIN CONTENT -->
+        <div id='content'>
+            <div class='p-3 w-75 mx-auto card-body bg-white d-flex flex-md-column'
+                v-for="struct in structure.structure">
                 <div v-if="struct.header !== 'undefined'">
                     <div class='d-flex justify-content-center p-2'>
                         <h2 class='p-3'>{{struct.header}}</h2>
@@ -25,20 +41,22 @@
                     <div class='bg-red p-2'>{{struct.code}}</div>
                 </div>
             </div>
-
-            <!-- <div class='w-75 mx-auto card-body bg-white d-flex flex-md-column'>
-                <div class='d-flex justify-content-center p-2'>
-                    <h2 class='p-3'>{{section.title}}</h2>
-                </div>
-                <div class='lead p-2'>{{section.body}}</div>
-            </div> -->
         </div>
+        <!-- END OF MAIN CONTENT -->
     </div>
     <div id='footer-placeholder'>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"
         integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
