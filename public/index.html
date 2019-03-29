@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Knowledge</title>
@@ -29,16 +30,16 @@
         <div id='content'>
             <div class='p-3 w-75 mx-auto card-body bg-white d-flex flex-md-column'
                 v-for="struct in structure.structure">
-                <div v-if="struct.header !== 'undefined'">
+                <div v-if="struct.header !== undefined">
                     <div class='d-flex justify-content-center p-2'>
-                        <h2 class='p-3'>{{struct.header}}</h2>
+                        <h2 class='p-3' contenteditable="true">{{struct.header}}</h2>
                     </div>
                 </div>
-                <div v-if="struct.body !== 'undefined'">
-                    <div class='lead p-2'>{{struct.body}}</div>
+                <div v-if="struct.body !== undefined">
+                    <div class='lead p-2' contenteditable="true">{{struct.body}}</div>
                 </div>
-                <div v-if="struct.code !== 'undefined'">
-                    <div class='bg-red p-2'>{{struct.code}}</div>
+                <div v-if="struct.code !== undefined">
+                    <div class='code p-2' contenteditable="true">{{struct.code}}</div>
                 </div>
             </div>
         </div>

@@ -94,3 +94,10 @@ a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
+
+.code {
+    background-color: #D8EFFF;
+    font-family: 'Source Code Pro', monospace;
+    width: fit-content;
+    color: #666666;
+}
