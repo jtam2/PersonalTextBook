@@ -63,6 +63,18 @@ app.get('/api/structure/:id', async (req, res)=>{
 
 })
 
+app.delete('/api/structure/:id', async (req, res) =>{
+    try {
+        await STRUCTURE.deleteOne({
+            _id:req.params.id
+        })
+        req.sendStatus(200)
+    } catch (err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+})
+
 app.put('/api/structure/:id', async (req, res) => {
     try{
         let structure = await STRUCTURE.findOne({_id: req.params.id})

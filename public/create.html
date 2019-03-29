@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Knowledge</title>
+</head>
+
+<body>
+    <div id='nav-placeholder'></div>
+    <div class='bg-light wrapper' id="app">
+        <!-- SIDE BAR -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Documents</h3>
+            </div>
+            <ul class="list-unstyled components" v-for="struct in structures">
+                <li>
+                    <button type='button' @click='displayDoc(struct._id)'>{{struct._id}}</button>
+                </li>
+            </ul>
+        </nav>
+        <div id='content'>
+            <div class="form-group card-body">
+                <label for="exampleFormControlInput1">Header</label>
+                <input v-model='title' type="title" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Title">
+            </div>
+
+            <!-- <button type="button" @click='addHeader' class="btn btn-success">Test Add Header</button>
+            <button type="button" @click='addBody' class="btn btn-success">Test Add Body</button>
+            <button type="button" @click='addCode' class="btn btn-success">Test Add Code</button>
+            <button type="button" @click='createSection' class="btn btn-success">Test POST structure to
+                database</button>
+            <button type="button" @click='deleteDoc({{structure._id}})' class="btn btn-success">Delete Doc</button> -->
+
+        </div>
+        <!-- <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input v-model='title' type="title" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Title">
+            </div>
+            <div class="form-group ">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea v-model='body' class="form-control" rows='10' id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div> -->
+
+
+    </div>
+    <div id='footer-placeholder'></div>
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"
+        integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js"
+        integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+        $.get("templates/navbar.html", function (data) {
+            $("#nav-placeholder").replaceWith(data);
+        });
+        $.get("templates/footer.html", function (data) {
+            $("#footer-placeholder").replaceWith(data);
+        })
+    </script>
+    <script src="/create.js"></script>
+</body>
+
+</html>
