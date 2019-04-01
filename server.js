@@ -20,7 +20,7 @@ let structureSchema = new mongoose.Schema({
 });
 
 //Comment this out when we put it in
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // section is the name of the collection and we passed in the Scheme
 //This returns a model or document you can say.
