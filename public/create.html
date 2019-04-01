@@ -12,43 +12,36 @@
 <body>
     <div id='nav-placeholder'></div>
     <div class='bg-light wrapper' id="app">
-        <!-- SIDE BAR -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Documents</h3>
-            </div>
-            <ul class="list-unstyled components" v-for="struct in structures">
-                <li>
-                    <button type='button' @click='displayDoc(struct._id)'>{{struct._id}}</button>
-                </li>
-            </ul>
-        </nav>
         <div id='content'>
-            <div class="form-group card-body">
-                <label for="exampleFormControlInput1">Header</label>
-                <input v-model='title' type="title" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Title">
+            <div v-if='structure.length != 0'>
+                <div v-for='struct in structure'>
+                    <div class='form-group card-body w-75 mx-auto'>
+                        <div v-if="struct.header !== undefined">
+                            <label for="exampleFormControlInput1"
+                                class='d-flex justify-content-center p-2'>Header</label>
+                            <input v-model='struct.header' type="title" class="form-control"
+                                id="exampleFormControlInput1">
+                        </div>
+                        <div v-if="struct.body !== undefined">
+                            <label for="exampleFormControlInput1" class='d-flex justify-content-center p-2'>Body</label>
+                            <textarea v-model='struct.body' type="body" class="form-control"
+                                id="exampleFormControlInput1" rows='10'></textarea>
+                        </div>
+                        <div v-if="struct.code !== undefined">
+                            <label for="exampleFormControlInput1" class='d-flex justify-content-center p-2'>Code</label>
+                            <textarea v-model='struct.code' type="code" class="form-control"
+                                id="exampleFormControlInput1" rows='10'></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" @click='createSection' class="btn btn-success">Create</button>
             </div>
-
-            <!-- <button type="button" @click='addHeader' class="btn btn-success">Test Add Header</button>
-            <button type="button" @click='addBody' class="btn btn-success">Test Add Body</button>
-            <button type="button" @click='addCode' class="btn btn-success">Test Add Code</button>
-            <button type="button" @click='createSection' class="btn btn-success">Test POST structure to
-                database</button>
-            <button type="button" @click='deleteDoc({{structure._id}})' class="btn btn-success">Delete Doc</button> -->
-
+            <div class='w-75 card-body mx-auto d-flex justify-content-center'>
+                <button type="button" @click='addHeader' class="btn btn-success m-3">Add Header</button>
+                <button type="button" @click='addBody' class="btn btn-success m-3">Add Body</button>
+                <button type="button" @click='addCode' class="btn btn-success m-3">Add Code</button>
+            </div>
         </div>
-        <!-- <div class="form-group">
-                <label for="exampleFormControlInput1">Title</label>
-                <input v-model='title' type="title" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Title">
-            </div>
-            <div class="form-group ">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea v-model='body' class="form-control" rows='10' id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div> -->
-
-
     </div>
     <div id='footer-placeholder'></div>
 

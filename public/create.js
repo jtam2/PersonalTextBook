@@ -5,26 +5,27 @@ var app = new Vue({
         structures: null
     },
     created() {
-        this.getSections();
+        // this.getSections();
     },
     methods: {
         async getSections() {
             try {
                 let response = await axios.get("/api/structure");
                 this.structures = response.data;
+                this.structure = this.structures[0]
                 return true;
             } catch (error) {
                 console.log(error);
             }
         },
         addHeader(){
-            this.structure.push({header: 'TESTING'})
+            this.structure.push({header: ''})
         },
         addBody(){
-            this.structure.push({body: "This is the body. Did you know that I love pie"})
+            this.structure.push({body: ''})
         },
         addCode(){
-            this.structure.push({code:'THIS IS A code Snippet let a=b'})
+            this.structure.push({code:''})
         },
         async createSection() {
             try {
